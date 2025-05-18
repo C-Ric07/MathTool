@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25">
+    <title>Simplify Fractions</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+    <div class = "div_proportions">
+        <h2>Simplify Fractions</h2>
+
+        <form method = "POST" action = "/simplify">
+            <input type = "text" class = "input_fractions" name = "num" placeholder = "Numerator" required value = "{{ num }}">
+            <hr class = "line_fractions">
+            <input type = "text" class = "input_fractions" name = "den" placeholder = "Denominator" required value = "{{ den }}">
+            
+            <button type = "submit">Simplify</button>
+            
+            <label class = "red-label">Result: {{ simplified }}</label>
+        </form>
+
+    </div>
+
+
+    <div class = "info-block">
+        <h2>How to Simplify a Fraction</h2>
+
+        {% if session.get("user") %}
+        <p>Before to concretely look at the procedure to solve any fraction, let's take a look at the structure of a basic fraction. The number at the <strong>top</strong> is called <strong>"numerator"</strong>, while the number at the <strong>bottom</strong> is called <strong>"denominator"</strong>. The structure is like this:
+            <br><br><br>
+            <img src = "{{ url_for('static', filename ='numerator_denominator.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            Now, let's go through the actual steps to simplify a fraction. We have to find the highest possible number by which both fractions can be divided, obviously giving an integer result. This is called <strong>GCD (Greatest Common Divisor)</strong> or HCF (Highest Common Factor).
+            In order to find it, we have to start by performing the <strong>prime factorization</strong> for both the numerator and the denominator. In other words, we have to <strong>decompose our two numbers into prime numbers</strong>. 
+            To do this, put the two numbers into <strong>two columns</strong>. Then, you have to think about a <strong>prime number that can divide your value</strong>, giving an integer number as a result. Usually, we start from the <strong>lowest prime numbers</strong> (2, 3, 5, ...) to reach higher prime numbers if needed.
+            For example, here there is the prime factorization of the numbers <strong>60 and 27</strong>:
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = 'Prime_Factorisation.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            Once we got the columns completed as shown, we have to <strong>group (or factor) the numbers on the right</strong>. We should <strong>multiply</strong> all the numbers, so if there is a value recurring, we can group it by appling the <strong>exponent</strong> (equal to the number of times the number is present).
+            Now that we have concluded the prime factorization, we have to <strong>compare the two results</strong>. In particular, we have to take only the <strong>common numbers with the lowest index</strong>. If there are two completely equal numbers, take only one of them. 
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = 'GDC_calculation.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            Now, put all the numbers found together as a <strong>multiplication</strong>. If you simply solve this multiplication by hand or with a calculator, you will finally get the GCD.
+            Let's finish our example with 60 and 27:
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = 'Comparison_60_27.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            We can now be proud since we have our famous GCD. The next step is simply to perfom a divison between our numerator and denominator and the GCD. In other words take the numerator and divide it by the GCD <strong>(numerator : GCD)</strong>. Then, do the same for the denominator (<strong>denominator : GCD</strong>).
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = 'Divisions_GDC.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            Lastly, build up the new <strong>simplified fraction</strong>. At the top, or numerator, plug in the first value calculated before (old numerator / GCD). At the bottom, or at the denominator, plug in the other value calculated before (old denominator : GCD).
+            You're done! Your mission is over!
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = 'Fraction_simplified.jpg') }}" alt = "Image" width="350" height="200">
+        </p>
+        <br>
+        <br>
+
+        <h2>Practical Explanation</h2>
+        <p>
+            Usually, there is a <strong>faster way</strong> to simplify fractions, above all if they are <strong>"small fractions"</strong>, in the sense that their numerator and denominator are small. Sometimes, we can also simply <strong>perform a division</strong>, and we will have the fully simplified fraction with <strong>1 at the denominator</strong>. For example, It is easy to simplify a fraction such as <strong>15/5</strong>, because we only have to do the division.
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = '15_5.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            In addition to this, there are some cases where the full simplification of a fraction can be carried out even <strong>without finding the GCD</strong>. For example, in the case of <strong>75/50</strong>, It is quite intuitive to notice how we can simplify it by <strong>dividing both members by 25</strong>, getting <strong>3/2</strong>.
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = '75_50.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            In this case, for example, we could have simplified this fraction by <strong>firstly dividing by 5</strong>, and then <strong>again by 5</strong>:
+            <br><br><br>
+            <img src = "{{ url_for('static', filename = '75_50_simplification.jpg') }}" alt = "Image" width="350" height="200">
+            <br><br>
+            And look at this procedure: it is the same of directly dividing by 25, as 75 / 5 / 5 = 75 / 25 = 3. This is why the technical method (finding the GCD) can be applied to all scenarios. You can also proceed with the "practical way" with simple fractions, but as numbers get bigger... maybe it's faster to find the GCD!  
+
+
+            </p>
+        {% else %}
+            <img src = "{{ url_for('static', filename = 'Locker.jpg') }}" alt = "Image" width="50" height="50">
+            <p style="color: red;">You must be logged in to access this content.</p>
+            <a style ="padding-right: 5px;" href = "/login">Login</a>
+            <a href = "/signup">Sign Up</a>
+        {% endif %}
+
+    </div>
+
+
+    <div class="menu-button" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+        <a href="/home">Home</a>
+        <a href="/proportions">Proportions</a>
+        <a href="/simplify">Simplify</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </div>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+    </script>
+
+
+
+
+    {% if session.get("user") %}
+
+        <div class="account-container">
+            <div class="avatar"></div>
+            <div class="name">{{ session["user"]["name"] }}</div>
+            <div class="email">{{ session["user"]["email"] }}</div>
+            <a class="logout-btn" href="/logout">Logout</a>
+            <form action="/delete" method = "POST" onsubmit = "return confirm('Are you sure to delete your account?');">
+                <button type = "submit" class = "delete-btn">Delete Account</button>
+            </form>
+        </div>
+
+    {% else %}
+
+        <div class="buttons-top-right">
+            <a href = "/login">Login</a>
+            <a href = "/signup">Sign Up</a>
+        </div>
+
+    {% endif %}
+
+
+
+
+    {% if alert %}
+        <script>
+            alert("{{ alert }}");
+        </script>
+    {% endif %}
+
+
+
+
+    <div class = "rules-box">
+        <h3>RULES!!</h3>
+        <ul>
+            <li>Enter data in both slots</li>
+            <li>Only enter integer numbers (decimal part is not taken into account)</li>
+            <li>Sign will not be considered (remember to add it after calculation!)</li>
+            <li>Avoid inserting mathematical operations in the slots</li>
+            <li>The number "0" in the denominator is not accepted!</li>
+            <li>Press "Simplify" for the result (the form is numerator / denominator)</li>
+        </ul>
+    </div>
+
+</body>
+</html>

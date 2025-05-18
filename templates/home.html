@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flask Website Project</title>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+    <div style = "position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <h1>You are on the homepage</h1>
+    </div>
+
+    <div class="menu-button" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+        <a href="/home">Home</a>
+        <a href="/proportions">Proportions</a>
+        <a href="/simplify">Simplify</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </div>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+    </script>
+    
+
+        {% if session.get("user") %}
+
+            <div class="account-container">
+                <div class="avatar"></div>
+                <div class="name">{{ session["user"]["name"] }}</div>
+                <div class="email">{{ session["user"]["email"] }}</div>
+                <a class="logout-btn" href="/logout">Logout</a>
+                <form action="/delete" method = "POST" onsubmit = "return confirm('Are you sure to delete your account?');">
+                    <button type = "submit" class = "delete-btn">Delete Account</button>
+                </form>
+            </div>
+
+        {% else %}
+
+            <div class="buttons-top-right">
+                <a href = "/login">Login</a>
+                <a href = "/signup">Sign Up</a>
+            </div>
+
+        {% endif %}
+
+
+</body>
+</html>

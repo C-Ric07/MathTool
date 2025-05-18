@@ -1,0 +1,400 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body centrato */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 250px;
+}
+
+
+
+/* Contenitore del form */
+div {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    text-align: center;
+    
+}
+
+/* Titolo */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 50px;
+}
+
+/* Campi di input */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 30px;
+}
+
+/* Bottone */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+p {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+input {
+    text-align: center;
+}
+
+
+.div_proportions {
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 1700px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #000000;
+    border-radius: 8px;
+
+}
+
+.input_proportions {
+    width: 24%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+.input_fractions {
+    width: 10%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 25px;
+}
+
+.line_fractions {
+    width: 10%;
+    height: 5px;
+    background-color: black;
+    margin: 2px auto;
+}
+
+.red-label {
+    width: 100%;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;  /* Rimuove la sottolineatura se usi <a> */
+    transition: background-color 0.3s;
+}
+
+.red-label:hover {
+    background-color: darkred;
+}
+
+.account-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px; /*300px*/
+    height: 270px; /*270px*/
+    padding-bottom: 100px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+    z-index: 1000;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+.account-container .avatar {
+    height: 100px;
+    width: 70px;
+    background-color: #eee;
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwFmDu_qsnKjwhAPkXVgFf6arVEgWwjhNae00npo-rU_C0vD-noxE0U262bJ_0HhGYm2I&usqp=CAU'); /* viso vuoto */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.account-container .name {
+    background-color: #ffffff;
+    border: none;
+    font-weight: 600;
+    font-size: 23px;
+    color: #333;
+    text-align: center;
+    vertical-align: middle;
+    width: 280px;
+    height: 50px;
+    word-break: break-word;
+}
+
+.account-container .email {
+    background-color: #ffffff;
+    border: none;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 2px;
+    text-align: center;
+    vertical-align: middle;
+    width: 280px;
+    height: 50px;
+    word-break:break-word;
+}
+
+.account-container .logout-btn {
+    padding: 8px 16px;
+    background-color: #007bff; ;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.account-container .logout-btn:hover {
+    background-color: #0056b3;
+}
+
+.account-container .delete-btn {
+    background-color: red; ;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.account-container .delete-btn:hover {
+    background-color: darkred;
+}
+
+
+.buttons-top-right {
+    position: fixed;
+    z-index: 999;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center; /* Centra orizzontalmente */
+    align-items: center;     /* Centra verticalmente */
+    gap: 10px;
+    background-color: #007bff; /* Sfondo blu */
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombra sottile */
+}
+
+.buttons-top-right a,
+.buttons-top-right button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-size: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.buttons-top-right a:hover,
+.buttons-top-right button:hover {
+    background-color: #0056b3;
+}
+
+.buttons-top-right button:focus,
+.buttons-top-right a:focus {
+    outline: none;
+}
+
+.rules-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 400px;
+    height: 380px;
+    background-color: #fff3f3;
+    border: 1px solid #ff4d4d;
+    border-radius: 8px;
+    padding: 15px;
+    color: #b30000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.rules-box h3 {
+    margin-top: 0;
+    font-size: 30px;
+    color: #cc0000;
+    text-align: center;
+}
+
+.rules-box ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.rules-box li {
+    margin-bottom: 8px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.info-block {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #ffffff; 
+    border: 1px solid #000000;
+    border-radius: 8px;
+    color: #333;
+    width: 1700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+}
+
+.info-block p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.confirm-btn, .cancel-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.confirm-btn:hover {
+    background-color: #0056b3;
+}
+
+.cancel-btn {
+    background-color: gray;
+}
+
+.cancel-btn:hover {
+    background-color: #555;
+}
+
+.menu-button {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 30px;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+}
+
+.menu a {
+    display: block;
+    margin: 5px 0;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.menu a:hover {
+    color: #0056b3;
+}
+
+.show {
+    display: block;
+}
+
+  
+
+
+

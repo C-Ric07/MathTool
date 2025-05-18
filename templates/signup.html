@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+    <div style = "position: absolute; width: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+        <h2> Create your account</h2>
+
+        <form method = "POST" action = "/signup">
+            <input type = "text" name = "name" placeholder = "Name" required>
+            <br>
+            <input type = "text" name = "email" placeholder = "Email" required>
+            <br>
+            <input type = "password" name = "password" placeholder = "Password" required>
+            <br>
+            <input type = "password" name = "confirmpassword" placeholder = "Confirm Password" required>
+            <br>
+            <button type = "submit">Sign Up</button>
+        </form>
+        <p>Do you have an account yet? <a href = "/login">Login</a></p>
+    </div>
+
+
+    <div class="menu-button" onclick="toggleMenu()">☰</div>
+    <div class="menu" id="menu">
+        <a href="/home">Home</a>
+        <a href="/proportions">Proportions</a>
+        <a href="/simplify">Simplify</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </div>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+    </script>
+    
+    
+    {% if alert %}
+        <script>
+            alert("{{ alert }}");
+        </script>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.25">
+    <title>Solve Proportions</title>
+    <link rel="stylesheet" href = "{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+        <div class = "div_proportions">
+            <h2>Solve Proportions With Unknown</h2>
+
+            <form method = "POST" action = "/proportions">
+                <input type = "text" name = "slot_1" class = "input_proportions" placeholder="slot_1" required value = "{{ slot_1 }}">
+                <label>:</label>
+                <input type = "text" name = "slot_2" class = "input_proportions" placeholder="slot_2" required value = "{{ slot_2 }}">
+                <label>=</label>
+                <input type = "text" name = "slot_3" class = "input_proportions" placeholder="slot_3" required value = "{{ slot_3 }}">
+                <label>:</label>
+                <input type = "text" name = "slot_4" class = "input_proportions" placeholder="slot_4" required value = "{{ slot_4 }}">
+                <button type = "submit">Solve</button>
+                <br>
+                <label class = "red-label">Result: {{ result }}</label>
+            </form>
+        </div>
+
+        <div class = "info-block">
+            <h2>How to Solve Proportions With Unknown</h2>
+
+            {% if session.get("user") %}
+            <p>It's easy to solve a proportions with an unknown value. Firstly, let's take a look at the structure of a proportion. We define as <strong>means</strong>
+            the inner terms, or the terms near the ":", while we call the outer terms, or the top right and left slots, <strong>extremes</strong>.
+                <br><br>For example: <br><br><br> <strong>4 : 8 = 12 : 24</strong> <br><br> In this case, <strong>4</strong> and <strong>24</strong> are the extremes, while <strong>8</strong> and <strong>12</strong> are the means. <br>
+                To approach the actual calculation, verify your availability in terms of means or extremes. In particular, check if you have both the means, or the extremes.
+                Next step, <strong>multiply</strong> the two means or the two extremes. Then, <strong>divide</strong> by the remaining value (the only one missing). Your unknown will be the result of these calculations. <br>
+                <br><br> For example: <br><br><br>
+                <strong>4 : x = 12 : 24</strong>
+                <br><br>
+                In this case, we can notice that we have both the extremes, or outer values (4 and 24). Following the procedure, let's multiply <strong>4 * 24</strong>. This is equal to 96. After this, simply divide by the only remaining value (12). <strong>96 : 12 </strong>= 8. This is our unknown value, or x                 
+            </p>
+            <br>
+            <br>
+            <h2>Practical Explanation</h2>
+            <p>When we deal with proportions, we are comparing two ratios. This means that we are constructing a similarity to balance, in order to mantain an <strong>equilbirium</strong>.
+                <br><br> An intuitive example could be the following scenario: a teacher has to give <strong>3 candies to each student</strong>. How many candies should they distribute, if there are <strong>5 students</strong> involved? This could be simply solved with basic skills. However, to understand the concept of proportions, let's set the first ratio, or fraction, or division. As the teacher should give 3 candies to each student, the ratio will be <strong>3 : 1 (3 candies to 1 student)</strong>, or 1 : 3 (1 student to 3 candies), even if the first one is more logical. Now that we have built our first ratio, let's focus on the second one. How many candies should be distributed to 5 students. If three candies have to be given to each student, then <strong>15 candies</strong> in total should be distributed to 5 students. This is intuitive, but it helps to understand the concept of proportionality.
+                In this case, we could set the following proportion:
+                <br><br><br><strong>3 : 1 = 15 : 5</strong><br><br>
+                In other words, 3 to 1 is in relationship with 15 : 5. In this case, the <strong>first and third term</strong> are related to candies, while the second and the fourth are related to students. It could be useful to reason in this way.
+                Notice how the starting rules apply. Proportions are just another way to write basic math, in a visual and intuitive way. For example, 15 * 1 = 15. This value divided by 5 gives 3, confirming the initial statements.
+                <br><br> Another example could be based on the most common use of proportions in our daily lives: measuring <strong>ingredients</strong> while cooking. Let's take as an example the recipe of a chocolate cake for <strong>5 people</strong>. <strong>140 grams</strong> of flour are needed. But if the cake is for <strong>7 people</strong>, how can I find out <strong>how many grams</strong> of flour I need? One approach could be to firstly find the grams for one person. This is intuitive as we simply need to divide 140 grams by 5, the number of people of the recipe. The result is 28 grams. 28 grams per person. Then, if I need the amount of flour for 7 people, I should only multiply 28 * 7, obtaining the total amount of flour needed (196 grams).
+                Now that we have understood the basic concept behind this example, let's try to take another approach, based on the use of proportions. As suggested before, build up the first ratio. You could build up this ratio as <strong>grams : people</strong> or viceversa. In this case, let's consider that 140 grams are needed for 5 people, so <strong>140 : 5</strong>. Now, we have to find the amount for 7 people. As we have to keep the <strong>same structure</strong> (bear it in mind), grams : people, let's plug in the new number of people (7).
+                <br><br> In conclusion, we have:<br><br><br>
+                <strong>140 : 5 = grams : 7</strong>
+                <br><br>
+                Then, simply find the amount of flour for 7 people by using the previous rules. As we have both the extremes, let's multiply them: <strong>140 * 7 = 980</strong>. Then, divide by the remaining value (the one that we have not used yet in our calculations, 5). <strong>980 : 5 = 196</strong>. Have you noticed something? The result is equal to the one calculated without proportions!
+                This was another simple and practical example to get how to assemble a proportion, when and how to use it. <br><br>
+                For our last example, let's consider geometry, and a slightly more advanced scenario. We have two <strong>similar triangles</strong>. This means that the <strong>proportion</strong> between the corresponding sides is <strong>constant</strong>. In other words, the figures are the same, in terms of shape, but the sizes are changing. For this example, let's take two similar triangles ABC. In triangle 1, segment <strong>AB is 15 cm</strong>. In triangle 2, the corresponding segment <strong>AB is 20 cm</strong>. The other available data is the lenght of segment <strong>BC</strong> in triangle 1, which is <strong>18 cm</strong>. We want to find che lenght of the <strong>corresponding side BC</strong>, in triangle 2.
+                <br><br><br> <img src = "{{ url_for('static', filename = 'Triangle_image.jpg') }}" alt = "Image" width="350" height="200"> <br><br>
+                Now It's time to set up our first ratio. Decide the order and the structure. Let's build it up as <strong>base : sloping edge</strong>, or <strong>AB : BC</strong>. So, for triangle 1, <strong>15 : 18</strong>. For triangle 2, we know the base (AB), but the sloping edge is our unknown, so <strong>20 : x</strong>. We are comparing these two ratios, because the division between the two sides must be equal in both triangles. So let's make up an equation between the two ratios, or in other words, a proportion. <br><br><br>
+                <strong>15 : 18 = 20 : x</strong> <br><br>
+                Then, let's solve for x, our unknown, following the initial rules. <strong>18 * 20 = 360</strong>. Then, divide by the other number. <strong>360 : 15 = 24 cm</strong>. This is the length of BC, in triangle 2, or x. It is a reasonable result, right? 
+            </p>
+            </br>
+            </br>
+            <h2>Mathematical Explanation</h2>
+            <p>Now that we have understood how to build up a proportion, its structure, and the logic behind it, let's take another approach, switching our perspective into a more mathematical one. When we build up a proportion, we have nothing more than an <strong>equation</strong>, comparing two ratios, or divisions. In other words, we have an equivalence, with two fractions on both sides of the equation. We are saying that the proportionality between our 4 values is constant (if one value changes at the numerator or denominator of one side of the equation, then a change will be needed to mantain this proportionality).
+                Let's take the starting example: <br><br><br>
+                <strong>4 : 8 = 12 : 24</strong>
+                <br><br>
+                This can be rewritten as:
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Equation_image.jpg') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                As we can see, we have a simple equation with a fraction on both sides. For this reason, if we perform the actual division (simplifying the fraction, or calculating the result with a calculator), we will get the same result on both sides, as it is an equation: <strong>4/8 = 1/2, or 0.5</strong>. On the rigth-hand side, <strong>12/24 = 1/2, or 0.5</strong>. This is true only if the equation (or the proportion) is well strucutred. Now that we got the relation between proportions and equations, let's try to solve a proportion with an unknown, understanding the concept by using equations.
+                If we want to find the same x as in the starting example, then we can rewrite our equation as:
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Equation_unknown_image.jpg') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                 Now, we only have to <strong>solve this equation for x</strong>, rearranging it to make x the subject, or in other words we should get x = "something". In this case, I can immediately notice that I can <strong>simplify the fraction on the right</strong>.
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Simplification_image.jpg') }}" alt = "Image" width="500" height="300"> 
+                <br><br>
+                So:
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Step_1_image.png') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                Now, let's <strong>get rid of the 2</strong> at the denominator on the right. To do this, use the inverse operation of the division: the <strong>multiplication</strong>. As we are dealing with an equation, to keep it true, we have to <strong>multiply by 2 on both sides</strong>. As we wanted, we will get rid of the 2 on the right, while on the left we have to multiply <strong>4 by 2</strong>. This is 8. Now we get:
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Step_2_image.jpg') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                Then, since we want <strong>x at the numerator</strong>, and not at the denominator, let's <strong>multiply by x</strong> on both sides, for the same reason as before (inverse operation). The x will simplify on the left, while on the right we have to <strong>multiply 1 by x</strong>. This is 1x, that is the same as x.
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Step_3_image.jpg') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                Now, we want to make x the subject (x = "something"), but now we do not have any fractions anymore. We have 1 multiplying x. To get rid of this one, you have to apply the inverse operation of the multiplication, the <strong>division</strong>. Remember to apply it on <strong>both sides</strong>. So we will get rid of the 1 on the right, and on the left we will have <strong>8/1</strong>.
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Step_4_image.jpg') }}" alt = "Image" width="500" height="300">
+                <br><br>
+                After this, we can notice how x is now the subject. To find this value, we have only to perform 8/1. This is simply <strong>8</strong>. Is the result correct? Try to check it with the initial rules of proportions!
+                <br><br><br>
+                <img src = "{{ url_for('static', filename = 'Step_5_image.png') }}" alt = "Image" width="500" height="300">
+                 
+            </p>
+            {% else %}
+                <img src = "{{ url_for('static', filename = 'Locker.jpg') }}" alt = "Image" width="50" height="50">
+                <p style="color: red;">You must be logged in to access this content.</p>
+                <a style ="padding-right: 5px;" href = "/login">Login</a>
+                <a href = "/signup">Sign Up</a>
+            {% endif %}
+        </div>
+        
+        
+    <div class="menu-button" onclick="toggleMenu()">☰</div>
+        <div class="menu" id="menu">
+        <a href="/home">Home</a>
+        <a href="/proportions">Proportions</a>
+        <a href="/simplify">Simplify</a>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+    </div>
+
+    <script>
+    function toggleMenu() {
+        var menu = document.getElementById("menu");
+        menu.classList.toggle("show");
+    }
+    </script>
+
+    
+
+    {% if session.get("user") %}
+
+        <div class="account-container">
+            <div class="avatar"></div>
+            <div class="name">{{ session["user"]["name"] }}</div>
+            <div class="email">{{ session["user"]["email"] }}</div>
+            <a class="logout-btn" href="/logout">Logout</a>
+            <form action="/delete" method = "POST" onsubmit = "return confirm('Are you sure to delete your account?');">
+                <button type = "submit" class = "delete-btn">Delete Account</button>
+            </form>
+        </div>
+
+    {% else %}
+
+        <div class="buttons-top-right">
+            <a href = "/login">Login</a>
+            <a href = "/signup">Sign Up</a>
+        </div>
+
+    {% endif %}
+
+
+    {% if alert %}
+        <script>
+            alert("{{ alert }}");
+        </script>
+    {% endif %}
+
+    <div class = "rules-box">
+        <h3>RULES!!</h3>
+        <ul>
+            <li>Enter data in all the slots</li>
+            <li>Enter three numbers and one unknown (a letter or a word is suggested)</li>
+            <li>Avoid special characters (only numbers or letters)</li>
+            <li>It's suggested to use "." and not "," for a decimal number</li>
+            <li>Avoid inserting mathematical operations in the slots</li>
+            <li>Press "Solve" for the result (rounded to 2 decimal places)</li>
+        </ul>
+    </div>
+
+
+
+</body>
+</html>
