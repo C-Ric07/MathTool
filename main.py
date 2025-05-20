@@ -25,7 +25,7 @@ class User(db.Model):
     
 
 
-@app.route("/home", methods=["POST", "GET"])
+@app.route("/", methods=["POST", "GET"])
 def home():
     return render_template("home.html")
 
@@ -52,7 +52,7 @@ def login():
         session["user"] = {"name":user.name, "email":user.email}
         
         
-        return redirect("/home")
+        return redirect("/")
 
     return render_template("login.html")
 
@@ -107,7 +107,7 @@ def signup():
         db.session.commit()
         
 
-        return redirect("/home")
+        return redirect("/")
 
 
     return render_template("signup.html")
